@@ -36,7 +36,7 @@ namespace TeamSpeak3QueryApi.Net
         private StreamWriter _writer;
         private NetworkStream _ns;
         private CancellationTokenSource _cts;
-        private readonly Queue<QueryCommand> _queue = new Queue<QueryCommand>();
+        private readonly ConcurrentQueue<QueryCommand> _queue = new();
         private readonly ConcurrentDictionary<string, List<Action<NotificationData>>> _subscriptions = new ConcurrentDictionary<string, List<Action<NotificationData>>>();
         internal Stopwatch Idle = new Stopwatch();
 
@@ -407,7 +407,8 @@ namespace TeamSpeak3QueryApi.Net
         {
             if (_queue.Count > 0)
             {
-                _currentCommand = _queue.Dequeue();
+                _ = _queue.TryDequeue(out _currentCommand);
+
                 Debug.WriteLine(_currentCommand.SentText);
                 await _writer.WriteLineAsync(_currentCommand.SentText).ConfigureAwait(false);
                 await _writer.FlushAsync().ConfigureAwait(false);
