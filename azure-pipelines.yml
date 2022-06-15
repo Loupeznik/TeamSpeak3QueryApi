@@ -5,7 +5,6 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -21,13 +20,10 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: MSBuild@1
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '$(solution)'
-    msbuildArchitecture: 'x64'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    msbuildArguments: '/p:DeployOnBuild=True'
+    command: 'build'
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
