@@ -35,16 +35,15 @@ steps:
     packagesToPack: '$(Build.SourcesDirectory)/src/TeamSpeak3QueryApi/TeamSpeak3QueryApi.csproj'
     versioningScheme: 'off'
 
-- task: DotNetCoreCLI@2
-  displayName: Push NuGet packages to internal feed
+- task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'fec35eb5-47a4-4789-9fd4-a3bcd21af267/a213a184-fce7-4021-9560-8d466b7c6eba'
+    allowPackageConflicts: true
 
-- task: DotNetCoreCLI@2
-  displayName: Push NuGet packages to external feed
+- task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
