@@ -31,7 +31,7 @@ steps:
   displayName: Pack NuGet packages
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '$(Build.SourcesDirectory)/src/TeamSpeak3QueryApi/TeamSpeak3QueryApi.csproj'
     versioningScheme: 'off'
 
 - task: DotNetCoreCLI@2

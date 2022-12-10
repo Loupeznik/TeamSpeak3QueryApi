@@ -6,7 +6,7 @@
 		<Company />
 		<Product />
 		<!-- Denote forked version -->
-		<PackageVersion>1.13.2-f1</PackageVersion>
+		<PackageVersion>1.13.2-f2</PackageVersion>
 		<Description>.NET API for the TeamSpeak 3 Query API</Description>
 		<PackageLicenseUrl>https://github.com/nikeee/TeamSpeak3QueryAPI/raw/master/LICENSE</PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/nikeee/TeamSpeak3QueryAPI</PackageProjectUrl>
