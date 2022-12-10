@@ -34,23 +34,21 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'off'
 
-- task: NuGetCommand@2
-  displayName: Push to internal NuGet feed
+- task: DotNetCoreCLI@2
+  displayName: Push NuGet packages to internal feed
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'fec35eb5-47a4-4789-9fd4-a3bcd21af267/a213a184-fce7-4021-9560-8d466b7c6eba'
-    allowPackageConflicts: true
 
-- task: NuGetCommand@2
-  displayName: Push to external NuGet feed
+- task: DotNetCoreCLI@2
+  displayName: Push NuGet packages to external feed
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'nuget.dzarsky.eu'
-    allowPackageConflicts: true
 
 - task: PublishBuildArtifacts@1
   displayName: Publish build artifact
