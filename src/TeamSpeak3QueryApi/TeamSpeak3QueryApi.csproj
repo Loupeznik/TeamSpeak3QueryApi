@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<Authors>Niklas Mollenhauer, Dominik Zarsky</Authors>
-		<PackageVersion>1.13.3-f1</PackageVersion>
+		<PackageVersion>1.13.3-f2</PackageVersion>
 		<Description>.NET API for the TeamSpeak 3 Query API</Description>
 
 		<PackageLicenseUrl>https://github.com/nikeee/TeamSpeak3QueryAPI/raw/master/LICENSE</PackageLicenseUrl>
@@ -25,7 +25,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-		<PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+		<PackageReference Include="System.Runtime.Serialization.Formatters" Version="9.0.0" />
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>
 
